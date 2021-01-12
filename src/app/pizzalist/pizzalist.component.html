@@ -1,0 +1,17 @@
+<div class="pizzaDetailsMain">
+  <div class="pizzaInfos" ngFor="let pizza in pizzas">
+    <div class="order">
+      <button class="btnPizza" type="button" (disabled)="(pizza.numberOrdered <= 0)" click="decrementNumber(pizza)">
+        -
+      </button>
+      <button class="btnPizza" type="button" (disabled)="(pizza.numberOrdered >= 7)" click="incrementNumber(pizza)">
+        +
+      </button>
+    </div>
+    <p>{ pizza.name } x{ pizza.numberOrdered }</p>
+    <p>
+      (Total: { pizza.totalAmountProduct | currency: "EUR":"symbol":"1.2-2" })
+      -- { pizza.price | currency: "EUR":"symbol":"1.2-2" }
+    </p>
+  </div>
+</div>

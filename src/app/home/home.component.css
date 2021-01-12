@@ -1,0 +1,34 @@
+.buttons {
+	display: flex;
+	justify-content: space-between
+}
+
+.resetBtn {
+	background-color: none;
+	border-radius:7px ;
+	cursor:pointer;
+	color: rgb(255, 37, 37);
+	font-size:1rem;
+    padding:8px 15px; 
+    outline: none;
+    border: 1px solid rgb(255, 37, 37);
+    align-self: flex-start;
+}
+.resetBtn:hover {
+	filter: brightness(105%)
+}
+
+.buyBtn {
+	background-color:#52cf8a;
+	border-radius:7px;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:1rem;
+    padding:8px 15px; 
+    outline: none;
+    border: none;
+    align-self: flex-end;
+}
+.buyBtn:hover {
+	filter: brightness(105%)
+}

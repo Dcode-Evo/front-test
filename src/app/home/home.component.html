@@ -1,0 +1,32 @@
+<div class="home-header">
+  <h3>Pizza ordered : { counter }</h3>
+  <div class="buttons">
+    <button class="resetBtn" (Onclick)="resetAll()">Reset</button>
+    <button class="buyBtn" (Onclick)="buyNow()">Buy Now</button>
+  </div>
+</div>
+<app-pizzalist (isAdded)="updateList()"></app-pizzalist>
+
+
+<ng-template #testModal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Your order.</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="test" ngFor="let pizza in pizzas">
+      <p ngIf="pizza.numberOrdered > 0">
+        { pizza.name } x { pizza.numberOrdered }
+      </p>
+    </div>
+    Total : { totalPrice }
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">
+      Confirm
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,6 @@
+<div class="userBasketDiv">Basket
+  <div class="basketPrice">
+    {amount | currency:'EUR': 'symbol':'1.2-2'}
+    <span ngIf="amount > 200"> Price Limit exceeded !</span>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.order {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 65px;
+}
+
+.btnPizza {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border-radius: 200px;;
+    height:30px;
+    width: 30px;
+}
