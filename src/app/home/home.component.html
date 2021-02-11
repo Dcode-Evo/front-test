@@ -11,7 +11,7 @@
   (isAdded)="updateCounter($event)"
 ></app-pizzalist>
 
-<ng-template #testModal let-modal *ngIf="openOrderSummary">
+<ng-template #openOrderSummary let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Your order.</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">

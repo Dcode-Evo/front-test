@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Pizza } from '../pizza';
 import { BasketService } from './../basket.service';
 import { PizzaService } from './../pizza.service';
@@ -10,15 +11,17 @@ import { PizzaService } from './../pizza.service';
 })
 export class HomeComponent implements OnInit {
 
+  @ViewChild('openOrderSummary') openOrderSummary: TemplateRef<any>;
+
   public counter = 0;
   public totalPrice = 0;
   public pizzaList: Pizza[] = [];
   public pizzaOrdered: Pizza[] = [];
-  public openOrderSummary = false;
 
   constructor(
     private pizzaService: PizzaService,
-    private basketService: BasketService
+    private basketService: BasketService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit(): void {
@@ -59,7 +62,8 @@ export class HomeComponent implements OnInit {
      */
     this.basketService.update.subscribe((totalAmount: number) => this.totalPrice = totalAmount);
     if (this.totalPrice > 0 && this.totalPrice <= 200) {
-      this.openOrderSummary = true;
+      console.log('ok');
+      this.modalService.open(this.openOrderSummary);
     }
   }
 
