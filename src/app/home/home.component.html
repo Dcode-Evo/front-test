@@ -1,14 +1,14 @@
 <div class="home-header">
-  <h3>Pizza ordered : { counter }</h3>
+  <h3>Pizza ordered : {{ counter }}</h3>
   <div class="buttons">
-    <button class="resetBtn" (Onclick)="resetAll()">Reset</button>
-    <button class="buyBtn" (Onclick)="buyNow()">Buy Now</button>
+    <button class="resetBtn" (click)="resetAll()">Reset</button>
+    <button class="buyBtn" (click)="buyNow()">Buy Now</button>
   </div>
 </div>
-<app-pizzalist (isAdded)="updateList()"></app-pizzalist>
 
+<app-pizzalist [pizzas]="pizzaList" (isAdded)="updateCounter($event)"></app-pizzalist>
 
-<ng-template #testModal let-modal>
+<ng-template #openOrderSummary let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Your order.</h4>
     <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
@@ -16,12 +16,12 @@
     </button>
   </div>
   <div class="modal-body">
-    <div class="test" ngFor="let pizza in pizzas">
-      <p ngIf="pizza.numberOrdered > 0">
-        { pizza.name } x { pizza.numberOrdered }
+    <div class="test" *ngFor="let pizza of pizzaOrdered">
+      <p>
+        {{ pizza.name }} x {{ pizza.numberOrdered }}
       </p>
     </div>
-    Total : { totalPrice }
+    Total : {{ totalPrice | currency:'EUR': 'symbol':'1.2-2' }}
   </div>
 
   <div class="modal-footer">
