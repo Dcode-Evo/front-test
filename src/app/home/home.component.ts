@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.pizzaList = this.pizzaService.get();
-    this.pizzaService.updatePizzasOrdered.subscribe((pizzaOrdered: Pizza[]) => this.pizzaOrdered = pizzaOrdered);
+    this.pizzaService.updatePizzasOrdered.subscribe((pizzaOrdered: Pizza[]) => this.pizzaOrdered = pizzaOrdered );
   }
 
   /**
@@ -62,7 +62,7 @@ export class HomeComponent implements OnInit {
      */
     this.basketService.update.subscribe((totalAmount: number) => this.totalPrice = totalAmount);
     if (this.totalPrice > 0 && this.totalPrice <= 200) {
-      console.log('ok');
+      this.pizzaService.update();
       this.modalService.open(this.openOrderSummary);
     }
   }

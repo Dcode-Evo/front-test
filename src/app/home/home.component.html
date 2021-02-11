@@ -6,10 +6,7 @@
   </div>
 </div>
 
-<app-pizzalist
-  [pizzas]="pizzaList"
-  (isAdded)="updateCounter($event)"
-></app-pizzalist>
+<app-pizzalist [pizzas]="pizzaList" (isAdded)="updateCounter($event)"></app-pizzalist>
 
 <ng-template #openOrderSummary let-modal>
   <div class="modal-header">
@@ -20,11 +17,11 @@
   </div>
   <div class="modal-body">
     <div class="test" *ngFor="let pizza of pizzaOrdered">
-      <p ngIf="pizza.numberOrdered > 0">
+      <p>
         {{ pizza.name }} x {{ pizza.numberOrdered }}
       </p>
     </div>
-    Total : {{ totalPrice }}
+    Total : {{ totalPrice | currency:'EUR': 'symbol':'1.2-2' }}
   </div>
 
   <div class="modal-footer">
