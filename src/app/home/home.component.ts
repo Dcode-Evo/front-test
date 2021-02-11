@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.pizzaList = this.pizzaService.get();
     this.pizzaService.updatePizzasOrdered.subscribe((pizzaOrdered: Pizza[]) => this.pizzaOrdered = pizzaOrdered );
+    this.basketService.update.subscribe((totalAmount: number) => this.totalPrice = totalAmount);
   }
 
   /**
@@ -60,7 +61,6 @@ export class HomeComponent implements OnInit {
      If the total amount of the basket is greater than 0 and equal or less to 200,
     you can open the modal that contains the pizza choosen
      */
-    this.basketService.update.subscribe((totalAmount: number) => this.totalPrice = totalAmount);
     if (this.totalPrice > 0 && this.totalPrice <= 200) {
       this.pizzaService.update();
       this.modalService.open(this.openOrderSummary);
